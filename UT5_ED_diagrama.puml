@@ -1,22 +1,137 @@
 @startuml
-abstract class vehiculo {}
+class Concesionario {
+- concesionario: ArrayList<Vehiculo>
 
-class coche{}
++ buscarVehiculo(): Vehiculo
++ listarVehiculos(): String
++ asignarVehiculo(): void
+}
 
-class sedan{}
-class suv {}
-class deportivo {}
+abstract class Vehiculo {
+# matricula: String
+# marca: String
+# modelo: String
+# añoFabricacion: int
+# kilometraje: int
+# precio: double
+# estado: Estado
+# propietario: persona
 
-class moto{}
++ toString(): String
++ calcularRiesgo(): String
+}
 
-class scooter{}
-class deportiva{}
+class Coche{
+# numPuertas: int
+# tipoCombustible: TipoCombustible
+# capacidadMaletero: int
+# traccion: Traccion
+}
 
-class camion{}
+class Sedan{
+- espacioInterior: double
+- nivelConfort: NivelConfort
 
-class persona{}
++ calcularDepreciación(): double
+}
+class Suv {
+- capacidadOffroad: boolean
+- alturaLibreSuelo: double
 
-interface valorable{}
++ Valorable(): double
+}
+class Deportivo {
+- aceleracion0a100: double
+- potenciaCV: int
+- tieneModoPista: boolean
 
-enum estado {}
++ calcularDepreciación(): double
+}
+
+class Moto{
+# cilindrada: int
+# peso: int
+# alturaAsiento: double
+# tipoTransmision: TipoTransmision
+}
+
+class Scooter{
+-espacioBajoAsiento: int
+
++ calcularDepreciación(): double
+}
+
+class Deportiva{
+- velocidadMaxima: double
+- tieneQuickShifter: boolean
+
++ calcularDepreciación(): double
+}
+
+class Camion{
+- capacidadCarga: double
+- numEjes: int
+- longitudRemolque: double
+- potenciaMotor: int
+
++ calcularDepreciación(): double
+}
+
+class Persona{
+- nombre: String
+- dni: String
+- fechaCaducidadCarnet: LocalDate
+- añoNacimiento: int
+}
+
+interface Valorable{
++ calcularDepreciación(): double
+}
+
+enum Estado {
+DISPONIBLE
+VENDIDO
+}
+
+enum TipoCombustible {
+GASOLINA
+DIESEL
+HÍBRIDO
+ELÉCTRICO
+}
+
+enum Traccion {
+DELANTERA
+TRASERA
+4X4
+}
+
+enum NivelConfort {
+BÁSICO
+MEDIO
+PREMIUM
+}
+
+enum TipoTransmision {
+MANUAL
+AUTOMÁTICA
+}
+
+Concesionario --> Vehiculo
+Vehiculo --> Persona
+Vehiculo --> Estado
+Vehiculo ..|> Valorable
+Vehiculo <|-- Coche
+Vehiculo <|-- Moto
+Vehiculo <|-- Camion
+Coche <|-- Sedan
+Coche <|-- Suv
+Coche <|-- Deportivo
+Coche --> TipoCombustible
+Sedan --> NivelConfort
+Suv --> Traccion
+Moto <|-- Scooter
+Moto <|-- Deportiva
+Moto --> TipoTransmision
+
 @enduml
