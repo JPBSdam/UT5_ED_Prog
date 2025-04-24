@@ -6,6 +6,7 @@
 - [x] Crear carpeta uml y fichero puml
 - [x] Modelar estructura inicial del diagrama
 - [x] Primer commit con estructura básica
-- [] Modelado completo del diagrama
-- [] Generación del archivo diagrama.svg
-- [] Añadir svg al README.md
+- [x] Modelado completo del diagrama
+- [x] Generación del archivo diagrama.svg
+- [x] Añadir svg al README.md
+![Diagrama de clases](UT5_ED_diagrama.svg)
